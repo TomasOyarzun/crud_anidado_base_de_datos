@@ -1,0 +1,22 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Contador</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category %></td>
+        <td><%= category.products.count %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-info" %></td>
+        <td><%= link_to 'Destroy', category_path(category), class: "btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <tr><%= link_to 'New Category', new_category_path %></tr>
+  </tbody>
+</table>
+

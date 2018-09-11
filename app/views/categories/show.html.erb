@@ -1,0 +1,41 @@
+<p id="notice">
+  <%= notice %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<!-- Form -->
+<%= form_with(model: [ @category, Product.new ], local: true) do |form| %> <!-- Reemplazar Product.new por @product -->
+  <div class="form-group">
+    <%= form.label :name, 'Nombre' %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Nombre' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: 'form-control', placeholder: 'Precio' %>
+  </div>
+  
+  <%= submit_tag 'Submit' %>
+<% end %>
+
+
+<h1> Productos: </h1>
+<% @category.products.each do |product| %>
+  <ul>
+    <li>
+      <%= product.name %>  
+      <%= product.price %> 
+      <%= link_to "x", category_product_path(@category, product), method: :delete %>
+    </li>
+  </ul>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+
