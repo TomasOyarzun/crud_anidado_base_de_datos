@@ -8,7 +8,7 @@
 </p>
 
 <!-- Form -->
-<%= form_with(model: [ @category, Product.new ], local: true) do |form| %> <!-- Reemplazar Product.new por @product -->
+<%= form_with(model: [ @category, @product ], local: true) do |form| %> <!-- Reemplazar Product.new por @product -->
   <div class="form-group">
     <%= form.label :name, 'Nombre' %>
     <%= form.text_field :name, class: 'form-control', placeholder: 'Nombre' %>
